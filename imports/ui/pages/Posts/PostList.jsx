@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router'
 
 export default class PostList extends React.Component {
     constructor() {
@@ -11,6 +12,16 @@ export default class PostList extends React.Component {
             this.setState({posts});
         });
     }
+
+    viewPost = (postId) => {
+        const { history } = this.props;
+        Meteor.call('post.incrementView', postId, (err) => {
+            if(err) {
+                return alert(err.details);
+            }
+            history.push('/posts/view/' + postId);
+        });
+    };
 
     render() {
         const {posts} = this.state;
@@ -32,6 +43,7 @@ export default class PostList extends React.Component {
                                     history.push("/posts/edit/" + post._id)
                                 }}> Edit post
                                 </button>
+                                <button onClick={() => this.viewPost(post._id)}>View post</button>
                             </div>
                         )
                     })}
