@@ -14,7 +14,8 @@ Meteor.methods({
         Posts.update(_id, {
             $set: {
                 title: post.title,
-                description: post.description
+                description: post.description,
+                type: post.type
             }
         });
     },
@@ -25,5 +26,12 @@ Meteor.methods({
 
     'post.get' (_id) {
         return Posts.findOne(_id);
+    },
+    'post.incrementView' (_id) {
+        return Posts.update(_id, {
+            $inc: {
+                views: 1
+            }
+        });
     }
 });
