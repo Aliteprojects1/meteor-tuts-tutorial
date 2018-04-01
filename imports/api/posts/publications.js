@@ -1,4 +1,4 @@
-import {Posts} from '/db';
+import {Posts} from '/db/index';
 import {Meteor} from "meteor/meteor";
 
 Meteor.publish('posts', function() {

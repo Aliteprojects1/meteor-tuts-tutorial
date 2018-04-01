@@ -1,6 +1,7 @@
 import React from 'react';
 import { AutoForm, AutoField } from 'uniforms-unstyled';
 import SimpleSchema from 'simpl-schema';
+import { Link } from 'react-router-dom'
 
 export default class Home extends React.Component {
     constructor() {
@@ -29,6 +30,16 @@ export default class Home extends React.Component {
 
         return (
             <div className="home">
+
+                <nav>
+                    <ul>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/posts'>Posts</Link></li>
+                        <li><Link to='/register'>Register</Link></li>
+                        <li><Link to='/login'>Login</Link></li>
+                    </ul>
+                </nav>
+
                 <button onClick={this.getRandomNumber}>Get Random number</button>
                 <p>My random number: {number}</p>
 

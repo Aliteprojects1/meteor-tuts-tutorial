@@ -1,27 +1,27 @@
 import SimplSchema from 'simpl-schema';
 
 export default new SimplSchema({
-    title: String,
-    description: String,
-    userId: {
+    text: String,
+    ownerUserId: {
         type: String,
         optional: true
     },
-    email: {
+    ownerEmail: {
         type: SimplSchema.RegEx.Email,
         optional: true
     },
-    views:  {
-        type: Number,
-        defaultValue: 0
+    postId: String,
+    postOwnerEmail: {
+        type: SimplSchema.RegEx.Email,
+        optional: true
+    },
+    postOwnerId: {
+        type: String,
+        optional: true
     },
     createdAt:  {
         type: Date,
         defaultValue: new Date()
-    },
-    type: String,
-    comments:  {
-        type: Number,
-        defaultValue: 0
-    },
+    }
+
 });
