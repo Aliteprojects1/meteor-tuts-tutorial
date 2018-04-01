@@ -1,6 +1,7 @@
 import React from 'react';
 import {AutoForm, AutoField, LongTextField, SelectField} from 'uniforms-unstyled';
 import PostSchema from '/db/posts/schema';
+import { PostType } from '../../../../db/posts/enums'
 
 export default class PostEdit extends React.Component {
     constructor() {
@@ -39,15 +40,7 @@ export default class PostEdit extends React.Component {
                     <SelectField
                         name= "type"
                         checkboxes={false}
-                        options={[
-                            {label: 'Select type', value: ""},
-                            {label: 'Nature', value: "Nature"},
-                            {label: 'Psychology', value: "Psychology"},
-                            {label: 'Music', value: "Music"},
-                            {label: 'Programming', value: "Programming"},
-                            {label: 'Project Management', value: "Project Management"},
-                            {label: 'Other', value: "Other"},
-                        ]}
+                        options={PostType}
                     />
 
                     <button type='submit'>Edit post</button>
