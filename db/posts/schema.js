@@ -1,4 +1,5 @@
 import SimplSchema from 'simpl-schema';
+import {AllowedPostType} from './enums';
 
 export default new SimplSchema({
     title: String,
@@ -19,7 +20,10 @@ export default new SimplSchema({
         type: Date,
         defaultValue: new Date()
     },
-    type: String,
+    type: {
+        type: String,
+        allowedValues: _.values(AllowedPostType)
+    },
     comments:  {
         type: Number,
         defaultValue: 0

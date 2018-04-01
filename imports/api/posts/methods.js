@@ -1,66 +1,28 @@
 import {Meteor} from 'meteor/meteor'
 import {Posts, Comments} from '/db';
+import PostService from "./services";
 
 Meteor.methods({
     'post.create'(post) {
-        const currentUser = Meteor.user();
-        if (currentUser){
-            post['userId'] = currentUser._id;
-            post['email'] = currentUser.emails[0].address;
-
-            Posts.insert(post);
-        }else {
-            throw new Meteor.Error('invalid-access', "You must be logged in to create post");
-        }
+        return PostService.createPost(post);
     },
 
     'post.list' () {
-        return Posts.find().fetch();
+        return PostService.listPost();
     },
 
     'post.edit' (_id, post) {
-        const currentUserId = Meteor.userId()
-        if (currentUserId) {
-            const postData = Posts.findOne({_id: _id, userId: currentUserId});
-            if (postData) {
-                Posts.update(_id, {
-                    $set: {
-                        title: post.title,
-                        description: post.description,
-                        type: post.type
-                    }
-                });
-            }else{
-                throw new Meteor.Error('invalid-access', "Invalid Access");
-            }
-        }else{
-            throw new Meteor.Error('invalid-access', "Invalid Access");
-        }
+        return PostService.updatePost(_id, post);
     },
 
     'post.remove' (postId){
-        const currentUserId = Meteor.userId()
-        if (currentUserId) {
-            const postData = Posts.findOne({_id: postId, userId: currentUserId});
-            if (postData) {
-                Posts.remove({_id: postId});
-                Comments.remove({postId: postId});
-            }else {
-                throw new Meteor.Error('invalid-access', "Invalid Access");
-            }
-        }else {
-            throw new Meteor.Error('invalid-access', "Invalid Access");
-        }
+        return PostService.removePost(postId);
     },
 
     'post.get' (_id) {
-        return Posts.findOne(_id);
+        return PostService.getPost(_id);
     },
-    'post.incrementView' (_id) {
-        return Posts.update(_id, {
-            $inc: {
-                views: 1
-            }
-        });
+    'post.incrementPostView' (_id) {
+        return PostService.incrementPostView(_id);
     }
 });

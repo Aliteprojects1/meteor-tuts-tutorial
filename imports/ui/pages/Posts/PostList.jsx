@@ -15,7 +15,7 @@ export default class PostList extends React.Component {
 
     viewPost = (postId) => {
         const { history } = this.props;
-        Meteor.call('post.incrementView', postId, (err) => {
+        Meteor.call('post.incrementPostView', postId, (err) => {
             if(err) {
                 return alert(err.reason);
             }
