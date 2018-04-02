@@ -22,4 +22,17 @@ Comments added in above file to describe how to use link to get the desired data
 
 
 
+#commits for chapter:
+chapter:1
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/49084b25d58a27676428575a32ad6b594a1d44e5
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/474a263af518384263cdd1648cf5a781a640fb89
 
+chapter:2
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/898674fc98f147cd500ca50635a8748bdf5274e6
+
+chapter:3
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/3e2c0289a22d39fb3c394fa294f6ca643ac8df76
+
+chapter:4
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/2abc799573414386a6fe0352eb03309c1622aad3
+https://github.com/Aliteprojects1/meteor-tuts-tutorial/commit/fc7ec3bce8a1c66613db441f56e55d7c10e9d3c5
