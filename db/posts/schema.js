@@ -27,5 +27,5 @@ export default new SimplSchema({
     comments:  {
         type: Number,
         defaultValue: 0
-    },
+    }
 });

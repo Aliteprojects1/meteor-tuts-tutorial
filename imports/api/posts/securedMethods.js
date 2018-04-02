@@ -9,11 +9,11 @@ Meteor.methods({
         Posts.insert(post);
     },
 
-    'secured.post_list' () {
+    'secured.post_list'() {
         return Posts.find().fetch();
     },
 
-    'secured.post_edit' (_id, postData) {
+    'secured.post_edit'(_id, postData) {
         Posts.update({_id: _id, userId: this.userId}, {
             $set: {
                 title: postData.title,
@@ -22,11 +22,11 @@ Meteor.methods({
         });
     },
 
-    'secured.post_remove' (_id){
+    'secured.post_remove'(_id){
         Posts.remove({_id: _id, userId: this.userId});
     },
 
-    'secured.post_get' (_id) {
+    'secured.post_get'(_id) {
         return Posts.findOne(_id);
     }
 });

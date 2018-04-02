@@ -14,3 +14,12 @@ we created for you several branches, each of them being an iteration of the tuto
 meteor npm install # to install all the dependencies
 npm run start # to run the project
 ```
+
+
+# link created for post and comment join
+path for link file: /db/posts/links.js
+Comments added in above file to describe how to use link to get the desired data.
+
+
+
+

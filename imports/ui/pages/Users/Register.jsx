@@ -53,5 +53,5 @@ const RegisterSchema = new SimpleSchema({
                 return 'passwordMismatch';
             }
         }
-    },
+    }
 });

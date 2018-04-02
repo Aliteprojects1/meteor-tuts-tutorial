@@ -1,7 +1,6 @@
 import React from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import {Posts, Comments} from '/db';
-import PostSchema from "../../../../db/posts/schema";
 import PostComments from "../../../../db/comments/schema";
 import {AutoForm, LongTextField, HiddenField, ErrorsField} from 'uniforms-unstyled';
 
@@ -64,9 +63,9 @@ class PostListReactive extends React.Component {
                                 <p><b>Comment</b>: {comment.text}, <b>Author Email</b>: {comment.ownerEmail}}</p>
                                 <p>
                                     { Meteor.userId() == comment.postOwnerId
-                                        ? <button onClick={() => this.deleteComment(comment._id)}>Delete comment as owner</button>
+                                        ? <button onClick={() => this.deleteComment(comment._id)}>Delete comment as post owner</button>
                                         : ( Meteor.userId() == comment.ownerUserId
-                                        ? <button onClick={() => this.deleteComment(comment._id)}>Delete comment as post</button>
+                                        ? <button onClick={() => this.deleteComment(comment._id)}>Delete comment as comment owner</button>
                                         :  ""
                                         )
                                     }
@@ -88,7 +87,6 @@ export default withTracker(props => {
     const postComments = Meteor.subscribe('commentsByPostId', props.match.params._id);
 
     return {
-        loading: !handle.ready(),
         loading: !postComments.ready(),
         post: Posts.findOne({_id: props.match.params._id}),
         comments: Comments.find({postId: props.match.params._id}, {createdAt: -1}).fetch(),

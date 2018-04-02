@@ -23,5 +23,4 @@ export default new SimplSchema({
         type: Date,
         defaultValue: new Date()
     }
-
 });

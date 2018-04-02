@@ -5,7 +5,7 @@ Posts.addLinks({
     'usersData': {
         type: 'one',
         collection: Meteor.users,
-        field: 'userId',
+        field: 'userId'
     }
 });
 
@@ -15,7 +15,7 @@ Comments.addLinks({
     'commentData': {
         type: 'one',
         collection: Posts,
-        field: 'postId',
+        field: 'postId'
     }
 });
 
@@ -30,7 +30,7 @@ Posts.addLinks({
 
 
 /*
-todo  we can use below code in meteor methods or server function to get desire result
+TODO  we can use below code in meteor methods or server function to get desire result
  let post = Posts.createQuery({
             $filters: {_id: postId},
             title: 1,
@@ -45,6 +45,5 @@ todo  we can use below code in meteor methods or server function to get desire r
                 text: 1
             }
         });
-
         return post.fetchOne();
  */

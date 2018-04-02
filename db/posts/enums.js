@@ -2,7 +2,7 @@ const AllowedPostType = ['Nature', 'Psychology', 'Music', 'Programming', 'Projec
 
 
 const PostType = [{label: 'Select type', value: ""}];
-AllowedPostType.forEach(function (type) {
+AllowedPostType.forEach(function(type) {
     PostType.push({label: type, value: type})
 });
 

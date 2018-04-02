@@ -16,7 +16,7 @@ export default class PostList extends React.Component {
     viewPost = (postId) => {
         const { history } = this.props;
         Meteor.call('post.incrementPostView', postId, (err) => {
-            if(err) {
+            if (err) {
                 return alert(err.reason);
             }
             history.push('/posts/view/' + postId);
@@ -25,7 +25,7 @@ export default class PostList extends React.Component {
 
     removePost = (postId) => {
         Meteor.call('post.remove', postId, (err) => {
-            if(err) {
+            if (err) {
                 return alert(err.reason);
             }
             alert('post removed');
@@ -54,7 +54,7 @@ export default class PostList extends React.Component {
                                 }}> Edit post
                                 </button>
                                 <button onClick={() => this.viewPost(post._id)}>View post</button>
-                                { Meteor.userId() == post.userId
+                                { Meteor.userId() === post.userId
                                     ? <button onClick={() => this.removePost(post._id)}>Delete post</button>
                                     : ""
                                 }

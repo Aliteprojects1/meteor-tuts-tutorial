@@ -8,9 +8,7 @@ class CommentService {
         if (currentUser){
             const _id = comment.postId;
             if (_id) {
-                console.log(1)
                 const postOwner = this._getPostById(_id);
-                console.log(2, postOwner)
                 if (postOwner) {
                     comment['ownerUserId'] = currentUser._id;
                     comment['ownerEmail'] = currentUser.emails[0].address;
@@ -22,14 +20,14 @@ class CommentService {
                             comments: 1
                         }
                     });
-                }else {
-                    throw new Meteor.Error('invalid-access', "Invalid Access1");
+                } else {
+                    throw new Meteor.Error('invalid-access', "Invalid Access");
                 }
 
-            }else {
+            } else {
                 throw new Meteor.Error('invalid-access', "Invalid Access");
             }
-        }else {
+        } else {
             throw new Meteor.Error('invalid-access', "You must be logged in to comment");
         }
     }
@@ -37,7 +35,7 @@ class CommentService {
     static removeComment(_id) {
         const currentUserId = Meteor.userId();
         const commentData = this._getComment(_id);
-        if ( currentUserId && commentData && ( currentUserId == commentData.postOwnerId || currentUserId == commentData.ownerUserId)) {
+        if (currentUserId && commentData && (currentUserId === commentData.postOwnerId || currentUserId === commentData.ownerUserId)) {
             Comments.remove(_id);
             Posts.update({_id: commentData.postId}, {
                 $inc: {

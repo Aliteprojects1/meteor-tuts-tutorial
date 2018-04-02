@@ -18,7 +18,7 @@ export default class Home extends React.Component {
 
     submit = (data) => {
         Meteor.call('method.checkString', data.myValue, (err, result) => {
-            if(err) {
+            if (err) {
                 return alert(err.details);
             }
             console.log(result);

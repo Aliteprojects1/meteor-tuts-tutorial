@@ -10,7 +10,7 @@ class PostService {
             post['email'] = currentUser.emails[0].address;
 
             Posts.insert(post);
-        }else {
+        } else {
             throw new Meteor.Error('invalid-access', "You must be logged in to create post");
         }
     }
@@ -33,10 +33,10 @@ class PostService {
                         type: post.type
                     }
                 });
-            }else{
+            } else {
                 throw new Meteor.Error('invalid-access', "Invalid Access");
             }
-        }else{
+        } else {
             throw new Meteor.Error('invalid-access', "Invalid Access");
         }
     }
@@ -48,10 +48,10 @@ class PostService {
             if (postData) {
                 Posts.remove({_id: postId});
                 Comments.remove({postId: postId});
-            }else {
+            } else {
                 throw new Meteor.Error('invalid-access', "Invalid Access");
             }
-        }else {
+        } else {
             throw new Meteor.Error('invalid-access', "Invalid Access");
         }
     }
